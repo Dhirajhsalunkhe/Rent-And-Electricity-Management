@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Salunkhe Corner | Dashboard</title>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#f5f7fb;
+    --sidebar:#111827;
+    --sidebar-hover:#1f2937;
+
+    --text:#111827;
+    --muted:#6b7280;
+
+    --card:#ffffff;
+    --border:#e5e7eb;
+
+    --blue:#2563eb;
+    --blue-light:#eff6ff;
+
+    --green:#16a34a;
+    --green-light:#f0fdf4;
+
+    --orange:#f59e0b;
+    --orange-light:#fffbeb;
+
+    --red:#dc2626;
+    --red-light:#fef2f2;
+
+    --shadow:0 8px 25px rgba(15,23,42,.06);
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    transition:.3s;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:245px;
+    height:100vh;
+
+    background:var(--sidebar);
+
+    color:white;
+
+    padding:25px 15px;
+
+    z-index:100;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:5px 0 25px rgba(0,0,0,.08);
+}
+
+
+.brand{
+
+    padding:5px 15px 30px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:20px;
+}
+
+
+.brand-icon{
+
+    width:45px;
+    height:45px;
+
+    border-radius:13px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 5px 20px rgba(37,99,235,.35);
+}
+
+
+.brand h2{
+
+    font-size:19px;
+
+    font-weight:700;
+
+    letter-spacing:-.4px;
+}
+
+
+.brand p{
+
+    margin-top:5px;
+
+    font-size:10px;
+
+    color:#94a3b8;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+.nav-title{
+
+    font-size:10px;
+
+    color:#64748b;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    padding:0 15px;
+
+    margin-bottom:8px;
+}
+
+
+.sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:12px 15px;
+
+    margin:4px 0;
+
+    border-radius:10px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    transition:.25s;
+}
+
+
+.sidebar a:hover{
+
+    background:var(--sidebar-hover);
+
+    color:white;
+
+    transform:translateX(3px);
+}
+
+
+.sidebar a.active{
+
+    background:linear-gradient(
+        90deg,
+        rgba(37,99,235,.9),
+        rgba(37,99,235,.55)
+    );
+
+    color:white;
+
+    box-shadow:0 5px 18px rgba(37,99,235,.2);
+}
+
+
+.nav-icon{
+
+    width:25px;
+
+    text-align:center;
+
+    font-size:16px;
+}
+
+
+.sidebar-bottom{
+
+    margin-top:auto;
+
+    padding:15px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#64748b;
+
+    font-size:10px;
+
+    text-align:center;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+
+    margin-left:245px;
+
+    padding:30px 35px 50px;
+
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+
+.header-left h1{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+}
+
+
+.header-left p{
+
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+
+.system-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:8px 12px;
+
+    border-radius:20px;
+
+    background:var(--green-light);
+
+    color:var(--green);
+
+    font-size:11px;
+
+    font-weight:600;
+}
+
+
+.status-dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:0 0 8px rgba(34,197,94,.6);
+}
+
+
+.toggle-btn{
+
+    border:none;
+
+    padding:9px 14px;
+
+    border-radius:9px;
+
+    background:#111827;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    transition:.25s;
+}
+
+
+.toggle-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
+    margin-bottom:35px;
+}
+
+
+.box{
+
+    position:relative;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+
+.box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(15,23,42,.09);
+}
+
+
+.box::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-30px;
+
+    bottom:-40px;
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    background:var(--blue-light);
+
+}
+
+
+.box-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+
+.box-icon{
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:11px;
+
+    font-size:19px;
+}
+
+
+.box-icon.blue{
+
+    background:var(--blue-light);
+}
+
+.box-icon.green{
+
+    background:var(--green-light);
+}
+
+.box-icon.orange{
+
+    background:var(--orange-light);
+}
+
+.box-icon.red{
+
+    background:var(--red-light);
+}
+
+
+.box-label{
+
+    font-size:11px;
+
+    color:var(--muted);
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+}
+
+
+.box h3{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    letter-spacing:-.5px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.box-sub{
+
+    margin-top:5px;
+
+    font-size:10px;
+
+    color:#94a3b8;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =========================
+   ROOM SECTION
+========================= */
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:17px;
+}
+
+
+.section-header h2{
+
+    font-size:18px;
+
+    font-weight:750;
+}
+
+
+.section-header span{
+
+    font-size:11px;
+
+    color:var(--muted);
+}
+
+
+/* =========================
+   ROOM GRID
+========================= */
+
+.rooms{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:18px;
+}
+
+
+/* =========================
+   ROOM CARD
+========================= */
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 40px rgba(15,23,42,.1);
+}
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    );
+}
+
+
+/* ROOM TOP */
+
+.room-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+
+.room-name{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.room-icon{
+
+    width:40px;
+    height:40px;
+
+    border-radius:10px;
+
+    background:var(--blue-light);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+}
+
+
+.room-name h3{
+
+    font-size:15px;
+
+    font-weight:700;
+}
+
+
+.room-label{
+
+    font-size:9px;
+
+    color:#94a3b8;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+}
+
+
+.room-status{
+
+    font-size:9px;
+
+    font-weight:700;
+
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:var(--green-light);
+
+    color:var(--green);
+
+    text-transform:uppercase;
+}
+
+
+/* ROOM INFORMATION */
+
+.room-info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-bottom:18px;
+}
+
+
+.info{
+
+    background:var(--bg);
+
+    padding:11px;
+
+    border-radius:9px;
+}
+
+
+.info-label{
+
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+
+    margin-bottom:5px;
+}
+
+
+.info-value{
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+
+/* NO BILL */
+
+.no-bill{
+
+    padding:10px;
+
+    background:var(--orange-light);
+
+    color:var(--orange);
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+}
+
+
+/* FORM */
+
+.card form{
+
+    margin-top:5px;
+}
+
+
+.input-label{
+
+    display:block;
+
+    font-size:9px;
+
+    color:var(--muted);
+
+    font-weight:600;
+
+    margin-top:8px;
+
+    margin-bottom:4px;
+
+    text-transform:uppercase;
+}
+
+
+.card input{
+
+    width:100%;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    border:1px solid var(--border);
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:11px;
+
+    transition:.25s;
+}
+
+
+.card input:focus{
+
+    border-color:var(--blue);
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.08);
+}
+
+
+/* BUTTONS */
+
+.btn{
+
+    width:100%;
+
+    border:none;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    margin-top:10px;
+
+    cursor:pointer;
+
+    background:var(--blue);
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 7px 18px rgba(37,99,235,.2);
+}
+
+
+.whatsapp{
+
+    background:#16a34a;
+}
+
+
+.whatsapp:hover{
+
+    box-shadow:0 7px 18px rgba(22,163,74,.2);
+}
+
+
+/* HISTORY */
+
+.history{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:12px;
+
+    padding-top:11px;
+
+    border-top:1px solid var(--border);
+
+    text-decoration:none;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:600;
+
+    transition:.2s;
+}
+
+
+.history:hover{
+
+    color:var(--blue);
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+#loader{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#f8fafc;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+
+#loader h2{
+
+    font-size:18px;
+
+    margin-top:5px;
+
+    color:#111827;
+}
+
+
+.loader-text{
+
+    font-size:10px;
+
+    color:#64748b;
+
+    margin-top:5px;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark{
+
+    --bg:#080d18;
+
+    --sidebar:#050914;
+
+    --sidebar-hover:#111827;
+
+    --text:#f1f5f9;
+
+    --muted:#94a3b8;
+
+    --card:#111827;
+
+    --border:#1f2937;
+
+    --blue-light:rgba(37,99,235,.12);
+
+    --green-light:rgba(22,163,74,.12);
+
+    --orange-light:rgba(245,158,11,.12);
+
+    --red-light:rgba(220,38,38,.12);
+
+    --shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+
+.dark .info{
+
+    background:#0b1220;
+}
+
+
+.dark .card input{
+
+    background:#0b1220;
+
+    color:white;
+
+    border-color:#263244;
+}
+
+
+.dark .toggle-btn{
+
+    background:#f1f5f9;
+
+    color:#111827;
+}
+
+
+.dark .system-status{
+
+    background:rgba(22,163,74,.12);
+}
+
+
+.dark #loader{
+
+    background:#080d18;
+}
+
+
+.dark #loader h2{
+
+    color:white;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .summary{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        width:70px;
+
+        padding:20px 8px;
+    }
+
+
+    .brand{
+
+        padding:5px 5px 20px;
+
+        text-align:center;
+    }
+
+
+    .brand h2,
+    .brand p,
+    .sidebar a span,
+    .nav-title,
+    .sidebar-bottom{
+
+        display:none;
+    }
+
+
+    .brand-icon{
+
+        margin:auto;
+
+        width:42px;
+        height:42px;
+    }
+
+
+    .sidebar a{
+
+        justify-content:center;
+
+        padding:13px;
+
+    }
+
+
+    .nav-icon{
+
+        font-size:19px;
+    }
+
+
+    .main{
+
+        margin-left:70px;
+
+        padding:25px 20px;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .main{
+
+        padding:20px 14px;
+    }
+
+
+    .header{
+
+        align-items:flex-start;
+
+        gap:10px;
+    }
+
+
+    .header-left h1{
+
+        font-size:23px;
+    }
+
+
+    .system-status{
+
+        display:none;
+    }
+
+
+    .summary{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:10px;
+    }
+
+
+    .box{
+
+        padding:15px;
+    }
+
+
+    .box h3{
+
+        font-size:20px;
+    }
+
+
+    .rooms{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:400px){
+
+    .summary{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     LOADER
+========================= -->
+
+<div id="loader">
+
+    <lottie-player
+        src="/static/animation.json"
+        background="transparent"
+        speed="1"
+        style="width:260px;height:260px"
+        loop
+        autoplay>
+    </lottie-player>
+
+    <h2>Loading Rent Manager...</h2>
+
+    <div class="loader-text">
+        PREPARING DASHBOARD
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<div class="sidebar">
+
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ⚡
+        </div>
+
+        <h2>Salunkhe Corner</h2>
+
+        <p>Smart Building System</p>
+
+    </div>
+
+
+    <div class="nav-title">
+        MAIN MENU
+    </div>
+
+
+    <a href="/dashboard" class="active">
+
+        <div class="nav-icon">
+            🏠
+        </div>
+
+        <span>Dashboard</span>
+
+    </a>
+
+
+    <a href="/summary">
+
+        <div class="nav-icon">
+            📊
+        </div>
+
+        <span>Summary</span>
+
+    </a>
+
+
+    <a href="/tenants">
+
+        <div class="nav-icon">
+            👥
+        </div>
+
+        <span>Tenant Detail</span>
+
+    </a>
+
+
+    <div class="nav-title" style="margin-top:20px;">
+        MANAGEMENT
+    </div>
+
+
+    <a href="/admin">
+
+        <div class="nav-icon">
+            ⚙️
+        </div>
+
+        <span>Admin Panel</span>
+
+    </a>
+
+
+    <a href="/logout">
+
+        <div class="nav-icon">
+            🚪
+        </div>
+
+        <span>Logout</span>
+
+    </a>
+
+
+    <div class="sidebar-bottom">
+
+        Salunkhe Corner<br>
+
+        Smart Rent Management<br>
+
+        © 2026
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="main">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+
+        <div class="header-left">
+
+            <h1>Dashboard</h1>
+
+            <p>
+                Overview of your building's rent and electricity management
+            </p>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+
+            <button
+                class="toggle-btn"
+                onclick="darkmode()"
+                id="darkButton">
+
+                🌙 Dark
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SUMMARY
+    ========================= -->
+
+    <div class="summary">
+
+
+        <div class="box">
+
+            <div class="box-top">
+
+                <div class="box-label">
+                    Total Rooms
+                </div>
+
+                <div class="box-icon blue">
+                    🏠
+                </div>
+
+            </div>
+
+            <h3>8</h3>
+
+            <div class="box-sub">
+                Managed units
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div class="box-top">
+
+                <div class="box-label">
+                    Total Rent
+                </div>
+
+                <div class="box-icon green">
+                    💰
+                </div>
+
+            </div>
+
+            <h3>
+                ₹{{data|sum(attribute='0.rent')}}
+            </h3>
+
+            <div class="box-sub">
+                Monthly rent
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div class="box-top">
+
+                <div class="box-label">
+                    Total Units
+                </div>
+
+                <div class="box-icon orange">
+                    ⚡
+                </div>
+
+            </div>
+
+            <h3>
+                {{ data | map(attribute=1) | map(attribute='units') | sum }}
+            </h3>
+
+            <div class="box-sub">
+                Electricity consumption
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div class="box-top">
+
+                <div class="box-label">
+                    Total Bills
+                </div>
+
+                <div class="box-icon red">
+                    🧾
+                </div>
+
+            </div>
+
+            <h3>
+                ₹{{data|sum(attribute='1.total') if data}}
+            </h3>
+
+            <div class="box-sub">
+                Generated bills
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         ROOMS
+    ========================= -->
+
+    <div class="section-header">
+
+        <h2>
+            Room Management
+        </h2>
+
+        <span>
+            8 active rooms
+        </span>
+
+    </div>
+
+
+    <div class="rooms">
+
+
+        {% for room,last in data %}
+
+
+        <div class="card">
+
+
+            <!-- ROOM HEADER -->
+
+            <div class="room-top">
+
+
+                <div class="room-name">
+
+                    <div class="room-icon">
+                        🏠
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            {{room.room_number}}
+                        </h3>
+
+                        <div class="room-label">
+                            Rental Unit
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                {% if last %}
+
+                <div class="room-status">
+                    Billed
+                </div>
+
+                {% else %}
+
+                <div
+                    class="room-status"
+                    style="
+                    background:var(--orange-light);
+                    color:var(--orange);
+                    ">
+
+                    Pending
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+
+            <!-- ROOM INFO -->
+
+            <div class="room-info">
+
+
+                <div class="info">
+
+                    <span class="info-label">
+                        Monthly Rent
+                    </span>
+
+                    <span class="info-value">
+                        ₹{{room.rent}}
+                    </span>
+
+                </div>
+
+
+                {% if last %}
+
+
+                <div class="info">
+
+                    <span class="info-label">
+                        Last Units
+                    </span>
+
+                    <span class="info-value">
+                        ⚡ {{last.units}}
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <span class="info-label">
+                        Last Bill
+                    </span>
+
+                    <span class="info-value">
+                        ₹{{last.total}}
+                    </span>
+
+                </div>
+
+
+                {% else %}
+
+
+                <div class="info">
+
+                    <span class="info-label">
+                        Electricity
+                    </span>
+
+                    <span class="info-value">
+                        —
+                    </span>
+
+                </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+            {% if not last %}
+
+            <div class="no-bill">
+
+                ⚠ No bill has been generated for this room yet.
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- GENERATE BILL -->
+
+            <form method="POST" action="/generate">
+
+
+                <input
+                    type="hidden"
+                    name="room_id"
+                    value="{{room.id}}"
+                >
+
+
+                <label class="input-label">
+                    Current Reading
+                </label>
+
+                <input
+                    type="number"
+                    name="current"
+                    placeholder="Enter current meter reading"
+                    required
+                >
+
+
+                <label class="input-label">
+                    Water Charge
+                </label>
+
+                <input
+                    type="number"
+                    name="water"
+                    placeholder="Water Charge"
+                    value="0"
+                >
+
+
+                <label class="input-label">
+                    Balance
+                </label>
+
+                <input
+                    type="number"
+                    name="balance"
+                    placeholder="Balance"
+                    value="0"
+                >
+
+
+                <button class="btn">
+
+                    ⚡ Generate Bill
+
+                </button>
+
+
+            </form>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="/send/{{room.id}}"
+                style="text-decoration:none;"
+            >
+
+                <button
+                    class="btn whatsapp"
+                    type="button">
+
+                    💬 Send WhatsApp
+
+                </button>
+
+            </a>
+
+
+            <!-- HISTORY -->
+
+            <a
+                class="history"
+                href="/history/{{room.id}}"
+            >
+
+                📜 View Bill History →
+
+            </a>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   LOADER
+========================= */
+
+window.onload=function(){
+
+    document.getElementById("loader").style.display="none";
+
+};
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function darkmode(){
+
+    document.body.classList.toggle("dark");
+
+    const button =
+        document.getElementById("darkButton");
+
+    if(document.body.classList.contains("dark")){
+
+        button.innerHTML="☀️ Light";
+
+    }else{
+
+        button.innerHTML="🌙 Dark";
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

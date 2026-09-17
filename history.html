@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>History</title>
+</head>
+
+<body style="font-family:Arial;background:#f4f4f4;text-align:center">
+
+<h2>{{room.room_number}} Bill History</h2>
+
+<table border="1" style="margin:auto;background:white">
+
+<tr>
+<th>Month</th>
+<th>Prev</th>
+<th>Current</th>
+<th>Units</th>
+<th>Electricity</th>
+<th>Water</th>
+<th>Balance</th>
+<th>Total</th>
+</tr>
+
+{% for b in bills %}
+
+<tr>
+    <td>{{b.month}}</td>
+    <td>{{b.prev_reading}}</td>
+    <td>{{b.curr_reading}}</td>
+    <td>{{b.units}}</td>
+    <td>{{b.electricity}}</td>
+    <td>{{b.water}}</td>
+    <td>{{b.balance}}</td>
+    <td>{{b.total}}</td>
+    
+    <td>
+    <a href="/delete/{{b.id}}">
+    <button style="background:red;color:white;border:none;padding:5px">
+    Delete
+    </button>
+    </a>
+    </td>
+    
+    </tr>
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<a href="/dashboard">Back</a>
+
+
+</body>
+</html>

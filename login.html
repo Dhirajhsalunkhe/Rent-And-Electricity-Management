@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Salunkhe Corner | Admin Login</title>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    color:white;
+
+    background:
+        linear-gradient(135deg,rgba(3,8,25,.94),rgba(5,20,45,.88)),
+        url("/static/Firefly.png");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* BACKGROUND */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.grid{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(0,200,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,200,255,.04) 1px,transparent 1px);
+
+    background-size:45px 45px;
+}
+
+.glow{
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.18;
+}
+
+.glow.one{
+    background:#00bfff;
+    top:-180px;
+    left:-150px;
+    animation:moveGlow 8s infinite alternate;
+}
+
+.glow.two{
+    background:#0066ff;
+    bottom:-200px;
+    right:-120px;
+    animation:moveGlow 10s infinite alternate-reverse;
+}
+
+@keyframes moveGlow{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(80px,50px);
+    }
+}
+
+/* PARTICLES */
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#58ddff;
+    border-radius:50%;
+    box-shadow:0 0 10px #00cfff;
+    animation:float 6s infinite ease-in-out;
+}
+
+.p1{left:10%;top:20%;animation-delay:0s;}
+.p2{left:20%;top:75%;animation-delay:1s;}
+.p3{left:35%;top:15%;animation-delay:2s;}
+.p4{left:48%;top:80%;animation-delay:3s;}
+.p5{left:65%;top:25%;animation-delay:1.5s;}
+.p6{left:78%;top:70%;animation-delay:2.5s;}
+.p7{left:90%;top:35%;animation-delay:4s;}
+.p8{left:55%;top:45%;animation-delay:1s;}
+.p9{left:30%;top:50%;animation-delay:3s;}
+.p10{left:85%;top:85%;animation-delay:2s;}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.3;
+    }
+
+    50%{
+        transform:translateY(-35px);
+        opacity:1;
+    }
+}
+
+/* MAIN */
+
+.main{
+    position:relative;
+    z-index:2;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:40px;
+}
+
+/* CONTENT */
+
+.content{
+    width:1100px;
+    max-width:100%;
+
+    display:grid;
+    grid-template-columns:1fr 430px;
+    gap:80px;
+
+    align-items:center;
+}
+
+/* LEFT SIDE */
+
+.brand{
+    animation:fadeLeft .9s ease;
+}
+
+@keyframes fadeLeft{
+    from{
+        opacity:0;
+        transform:translateX(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.logo-icon{
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    font-size:32px;
+
+    background:rgba(0,200,255,.12);
+    border:1px solid rgba(0,210,255,.4);
+
+    box-shadow:
+        0 0 30px rgba(0,200,255,.18),
+        inset 0 0 20px rgba(0,200,255,.08);
+
+    margin-bottom:25px;
+}
+
+.brand h1{
+    font-size:55px;
+    font-weight:800;
+    letter-spacing:-2px;
+
+    background:linear-gradient(90deg,#ffffff,#63ddff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    margin-top:12px;
+
+    font-size:18px;
+    color:#a9c4d5;
+
+    letter-spacing:.5px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    margin-top:25px;
+
+    color:#8deaff;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+    background:#22e6a8;
+
+    box-shadow:0 0 12px #22e6a8;
+}
+
+/* FEATURES */
+
+.features{
+    display:flex;
+    gap:15px;
+
+    margin-top:40px;
+}
+
+.feature{
+    width:135px;
+    padding:18px 14px;
+
+    background:rgba(255,255,255,.045);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-6px);
+
+    background:rgba(0,200,255,.08);
+
+    border-color:rgba(0,210,255,.3);
+
+    box-shadow:0 10px 30px rgba(0,190,255,.12);
+}
+
+.feature-icon{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.feature strong{
+    display:block;
+    font-size:14px;
+}
+
+.feature span{
+    display:block;
+
+    margin-top:5px;
+
+    font-size:11px;
+    color:#7892a3;
+}
+
+/* LOGIN CARD */
+
+.login-card{
+    position:relative;
+
+    padding:42px;
+
+    border-radius:25px;
+
+    background:rgba(8,18,35,.68);
+
+    border:1px solid rgba(135,220,255,.18);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    animation:fadeRight .9s ease;
+}
+
+@keyframes fadeRight{
+    from{
+        opacity:0;
+        transform:translateX(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.login-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:12%;
+    right:12%;
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #32d9ff,
+        transparent
+    );
+
+    box-shadow:0 0 15px #32d9ff;
+}
+
+.login-title{
+    font-size:29px;
+    font-weight:700;
+}
+
+.login-subtitle{
+    margin-top:8px;
+
+    color:#809aaa;
+
+    font-size:13px;
+}
+
+/* INPUTS */
+
+.input-group{
+    position:relative;
+
+    margin-top:25px;
+}
+
+.input-group label{
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:12px;
+
+    color:#9db4c2;
+
+    font-weight:600;
+}
+
+.input-box{
+    position:relative;
+}
+
+.input-box span{
+    position:absolute;
+
+    left:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:17px;
+
+    opacity:.7;
+
+    pointer-events:none;
+}
+
+.input-box input{
+    width:100%;
+
+    padding:15px 45px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(255,255,255,.045);
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+
+    transition:.3s;
+}
+
+.input-box input::placeholder{
+    color:#607887;
+}
+
+.input-box input:focus{
+    border-color:#21cfff;
+
+    background:rgba(0,200,255,.055);
+
+    box-shadow:
+        0 0 0 3px rgba(0,200,255,.08),
+        0 0 25px rgba(0,200,255,.08);
+}
+
+/* PASSWORD */
+
+.toggle-password{
+    position:absolute;
+
+    right:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    background:none;
+    border:none;
+
+    color:#718d9d;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    width:auto;
+}
+
+.toggle-password:hover{
+    color:#3bd9ff;
+}
+
+/* LOGIN BUTTON */
+
+.login-button{
+    width:100%;
+
+    margin-top:28px;
+
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    background:linear-gradient(
+        90deg,
+        #008dcc,
+        #00cfff
+    );
+
+    box-shadow:
+        0 8px 25px rgba(0,190,255,.22);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.login-button::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    transition:.5s;
+}
+
+.login-button:hover::before{
+    left:100%;
+}
+
+.login-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 35px rgba(0,200,255,.35);
+}
+
+.login-button:active{
+    transform:scale(.98);
+}
+
+/* SECURITY */
+
+.security{
+    margin-top:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+
+    color:#607987;
+
+    font-size:11px;
+}
+
+/* FOOTER */
+
+.footer{
+    position:fixed;
+
+    bottom:18px;
+    left:0;
+    right:0;
+
+    text-align:center;
+
+    color:#526b79;
+
+    font-size:11px;
+
+    z-index:3;
+}
+
+/* LOADER */
+
+#loader{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:999;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,190,255,.12),
+            rgba(2,7,20,.98) 55%
+        );
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    backdrop-filter:blur(10px);
+}
+
+.loader-title{
+    margin-top:10px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#bceeff;
+}
+
+.loader-subtitle{
+    margin-top:7px;
+
+    font-size:11px;
+
+    color:#648393;
+
+    letter-spacing:1px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    body{
+        overflow:auto;
+    }
+
+    .main{
+        padding:30px 20px;
+    }
+
+    .content{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        max-width:480px;
+    }
+
+    .brand{
+        text-align:center;
+    }
+
+    .logo-icon{
+        margin:0 auto 20px;
+    }
+
+    .brand h1{
+        font-size:40px;
+    }
+
+    .features{
+        justify-content:center;
+    }
+
+    .feature{
+        width:110px;
+    }
+
+    .login-card{
+        padding:30px;
+    }
+
+    .footer{
+        position:relative;
+        margin-top:20px;
+        padding-bottom:20px;
+    }
+}
+
+@media(max-width:500px){
+
+    .brand h1{
+        font-size:34px;
+    }
+
+    .subtitle{
+        font-size:14px;
+    }
+
+    .features{
+        gap:8px;
+    }
+
+    .feature{
+        width:100px;
+        padding:14px 8px;
+    }
+
+    .login-card{
+        padding:25px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="background">
+
+    <div class="grid"></div>
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+    <div class="particle p6"></div>
+    <div class="particle p7"></div>
+    <div class="particle p8"></div>
+    <div class="particle p9"></div>
+    <div class="particle p10"></div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="content">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="brand">
+
+            <div class="logo-icon">
+                ⚡
+            </div>
+
+            <h1>Salunkhe Corner</h1>
+
+            <p class="subtitle">
+                Smart Rent & Energy Management System
+            </p>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Ready
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🏠
+                    </div>
+
+                    <strong>8 Rooms</strong>
+
+                    <span>
+                        Managed Units
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <strong>Energy</strong>
+
+                    <span>
+                        Smart Billing
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <strong>Analytics</strong>
+
+                    <span>
+                        Live Reports
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-card" id="loginbox">
+
+            <div class="login-title">
+                Welcome Back 👋
+            </div>
+
+            <div class="login-subtitle">
+                Sign in to access your admin dashboard
+            </div>
+
+
+            <form method="POST" onsubmit="showLoader()">
+
+
+                <div class="input-group">
+
+                    <label>
+                        USERNAME
+                    </label>
+
+                    <div class="input-box">
+
+                        <span>👤</span>
+
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        PASSWORD
+                    </label>
+
+                    <div class="input-box">
+
+                        <span>🔒</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            onclick="togglePassword()"
+                            id="eyeButton"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="loginButton"
+                >
+                    ⚡ LOGIN TO DASHBOARD
+                </button>
+
+
+            </form>
+
+
+            <div class="security">
+                🔐 Secure Administrator Access
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+    SALUNKHE CORNER &nbsp;•&nbsp; Smart Building Management &nbsp;•&nbsp; © 2026
+</div>
+
+
+<!-- LOADER -->
+
+<div id="loader">
+
+    <lottie-player
+        src="/static/animation.json"
+        background="transparent"
+        speed="1"
+        style="width:280px;height:280px"
+        loop
+        autoplay>
+    </lottie-player>
+
+    <div class="loader-title">
+        Opening Dashboard...
+    </div>
+
+    <div class="loader-subtitle">
+        AUTHENTICATING ADMIN
+    </div>
+
+</div>
+
+
+<script>
+
+function showLoader(){
+
+    document.getElementById("loginbox").style.display="none";
+
+    document.getElementById("loader").style.display="flex";
+
+}
+
+
+function togglePassword(){
+
+    const password = document.getElementById("password");
+    const eyeButton = document.getElementById("eyeButton");
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        eyeButton.textContent = "🙈";
+
+    }else{
+
+        password.type = "password";
+
+        eyeButton.textContent = "👁";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

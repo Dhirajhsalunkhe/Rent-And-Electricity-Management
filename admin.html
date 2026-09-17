@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel | Salunkhe Corner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+
+min-height:100vh;
+
+padding:40px;
+
+color:white;
+
+}
+
+.container{
+
+max-width:1400px;
+
+margin:auto;
+
+}
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:35px;
+
+}
+
+.logo{
+
+font-size:32px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+}
+
+.logo span{
+
+color:#38bdf8;
+
+}
+
+.back-btn{
+
+text-decoration:none;
+
+background:#2563eb;
+
+padding:12px 25px;
+
+border-radius:10px;
+
+color:white;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+background:#1d4ed8;
+
+transform:translateY(-3px);
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:20px;
+
+padding:30px;
+
+margin-bottom:35px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+}
+
+.card h2{
+
+margin-bottom:25px;
+
+color:#38bdf8;
+
+font-size:24px;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:20px;
+
+}
+
+.input-group{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.input-group label{
+
+margin-bottom:8px;
+
+font-size:15px;
+
+font-weight:500;
+
+}
+
+.input-group input{
+
+padding:13px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ffffff;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+.save-building{
+
+margin-top:25px;
+
+padding:14px 35px;
+
+background:#10b981;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.save-building:hover{
+
+background:#059669;
+
+transform:translateY(-3px);
+
+}
+
+.rooms{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:25px;
+
+}
+
+.room-card{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:20px;
+
+padding:25px;
+
+transition:.3s;
+
+}
+
+.room-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.room-card h3{
+
+margin-bottom:18px;
+
+color:#38bdf8;
+
+}
+
+.room-card input{
+
+width:100%;
+
+padding:12px;
+
+margin-top:8px;
+
+margin-bottom:15px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:15px;
+
+}
+
+.save-all{
+
+display:block;
+
+margin:45px auto;
+
+padding:16px 50px;
+
+font-size:18px;
+
+background:#2563eb;
+
+border:none;
+
+color:white;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-weight:600;
+
+}
+
+.save-all:hover{
+
+background:#1d4ed8;
+
+transform:translateY(-4px);
+
+}
+
+.footer{
+
+text-align:center;
+
+margin-top:50px;
+
+opacity:.7;
+
+font-size:14px;
+
+}
+
+@media(max-width:700px){
+
+.header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="logo">
+
+⚙️ <span>Salunkhe Corner</span> Admin Panel
+
+</div>
+
+<a href="/dashboard" class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+<form action="/update_admin" method="POST">
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-building"></i>
+
+Building Details
+
+</h2>
+
+<div class="grid">
+
+<div class="input-group">
+
+<label>Building Name</label>
+
+<input
+type="text"
+name="building_name"
+value="{{ settings['building_name'] if settings else '' }}">
+
+</div>
+
+<div class="input-group">
+
+<label>Owner Name</label>
+
+<input
+type="text"
+name="owner_name"
+value="{{ settings['owner_name'] if settings else '' }}">
+
+</div>
+
+<div class="input-group">
+
+<label>Owner Phone</label>
+
+<input
+type="text"
+name="owner_phone"
+value="{{ settings['owner_phone'] if settings else '' }}">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-house"></i>
+
+Room Management
+
+</h2>
+
+<div class="rooms">
+    {% for room in rooms %}
+
+<div class="room-card">
+
+<h3>
+
+<i class="fa-solid fa-bed"></i>
+
+Room {{ room["room_number"] }}
+
+</h3>
+
+<input
+type="hidden"
+name="id[]"
+value="{{ room['id'] }}">
+
+<label>Phone Number</label>
+
+<input
+type="text"
+name="phone[]"
+value="{{ room['phone'] }}">
+
+<label>Monthly Rent (₹)</label>
+
+<input
+type="number"
+name="rent[]"
+value="{{ room['rent'] }}">
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<button
+class="save-all"
+type="submit">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save All Changes
+
+</button>
+
+</form>
+<div class="footer">
+
+    © 2026 Salunkhe Corner | Admin Panel
+    
+    </div>
+    
+    </div>
+    
+    <script>
+    
+    const cards=document.querySelectorAll(".room-card");
+    
+    cards.forEach(card=>{
+    
+    card.addEventListener("mouseenter",()=>{
+    
+    card.style.boxShadow="0 15px 30px rgba(56,189,248,.35)";
+    
+    });
+    
+    card.addEventListener("mouseleave",()=>{
+    
+    card.style.boxShadow="0 10px 25px rgba(0,0,0,.35)";
+    
+    });
+    
+    });
+    
+    </script>
+    
+    </body>
+    </html>

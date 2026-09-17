@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Leave Room</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#eef2f7;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+background:white;
+width:700px;
+padding:35px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#2c3e50;
+}
+
+.room{
+background:#e74c3c;
+color:white;
+padding:12px;
+text-align:center;
+border-radius:8px;
+font-size:22px;
+margin-bottom:25px;
+}
+
+.info{
+margin-bottom:25px;
+line-height:35px;
+font-size:18px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+label{
+display:block;
+margin-bottom:5px;
+font-weight:bold;
+}
+
+.buttons{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+}
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+color:white;
+font-size:15px;
+}
+
+.cancel{
+background:#7f8c8d;
+text-decoration:none;
+display:flex;
+align-items:center;
+}
+
+.leave{
+background:#e74c3c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>
+<i class="fa-solid fa-door-open"></i>
+Leave Room
+</h2>
+
+<div class="room">
+
+{{ tenant.room_number }}
+
+</div>
+
+<div class="info">
+
+<b>Name :</b> {{ tenant.name }} <br>
+
+<b>Deposit :</b> ₹{{ tenant.deposit }}
+
+</div>
+
+<form method="POST" action="/leave_tenant/{{tenant.id}}">
+
+<div class="grid">
+
+<div>
+
+<label>Remaining Rent</label>
+
+<input
+type="number"
+name="rent_due"
+value="0"
+required>
+
+</div>
+
+<div>
+
+<label>Electricity Bill</label>
+
+<input
+type="number"
+name="electricity"
+value="0"
+required>
+
+</div>
+
+<div>
+
+<label>Water Charges</label>
+
+<input
+type="number"
+name="water"
+value="0"
+required>
+
+</div>
+
+<div>
+
+<label>Previous Balance</label>
+
+<input
+type="number"
+name="balance"
+value="0"
+required>
+
+</div>
+
+<div>
+
+<label>Leaving Date</label>
+
+<input
+type="date"
+name="leaving_date"
+required>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a href="/tenants" class="btn cancel">
+
+Cancel
+
+</a>
+
+<button class="btn leave">
+
+Confirm Leave
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
